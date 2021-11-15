@@ -11,7 +11,8 @@ class LandmarksController < ApplicationController
 
   def create
     @landmark = Landmark.new(landmark_params)
-    if @landmark.save
+    @landmark.user = current_user
+    if @landmark.save!
       redirect_to landmarks_path
     else
       render :new
