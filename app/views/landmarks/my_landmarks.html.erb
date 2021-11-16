@@ -1,0 +1,10 @@
+<ul>
+  <%@landmarks.each do |landmark|%>
+    <li>
+      <h3><%= landmark.name %></h3>
+      <p><%= landmark.location %></p>
+      <p><%= landmark.description %></p>
+      <p><%= landmark.price_per_day %></p>
+    </li>
+  <%end%>
+</ul>
