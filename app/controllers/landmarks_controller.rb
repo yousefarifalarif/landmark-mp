@@ -30,12 +30,13 @@ class LandmarksController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   private
 
   def landmark_params
-    params.require(:landmark).permit(:name, :location, :description, :price_per_day)
+    params.require(:landmark).permit(:name, :location, :description, :price_per_day, :photo)
   end
 
   def select_landmark

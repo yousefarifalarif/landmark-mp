@@ -1,7 +1,9 @@
 <%= simple_form_for [@landmark, @booking] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :total_price, disabled: true%>
+  <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+  <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
+  <%= f.input :total_price, as: :hidden %>
   <%= f.input :special_request %>
+  <p><strong>Total price:</strong></p>
+  <p id="price">£ 0</p>
   <%= f.submit %>
 <% end %>
