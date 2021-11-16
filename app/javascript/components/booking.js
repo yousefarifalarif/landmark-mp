@@ -2,7 +2,6 @@ import flatpickr from 'flatpickr';
 
 // get price of current item
 const pricePerDay = parseFloat(document.querySelector(".price-per-day").dataset.pricePerDay);
-console.log(pricePerDay);
 const priceInput = document.getElementById("booking_total_price");
 const totalPrice = document.getElementById("price");
 priceInput.hidden = true;
@@ -13,13 +12,12 @@ const toggleDateInputs = function () {
 
 
   if (startDateInput && endDateInput) {
-    const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
-    console.log(unvailableDates);
+    const unavailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
 
     flatpickr(startDateInput, {
       minDate: 'today',
       dateFormat: 'Y-m-d',
-      disable: unvailableDates,
+      disable: unavailableDates,
       onChange: function (selectedDates, selectedDate) {
         if (selectedDate === '') {
           endDateInput.disabled = true;
@@ -33,7 +31,7 @@ const toggleDateInputs = function () {
     const endDateCalendar =
       flatpickr(endDateInput, {
         dateFormat: 'Y-m-d',
-        disable: unvailableDates,
+        disable: unavailableDates,
         onChange: function (_, selectedDate) {
           if (selectedDate === '') {
           } else {
