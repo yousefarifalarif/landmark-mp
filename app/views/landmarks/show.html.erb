@@ -1,20 +1,34 @@
-<%# placeholder styling on the banner to show layout correctly %>
-<div class="banner" style="border-bottom: 1px solid black; height: 350px">
-<img src="" alt="">
-</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <%# placeholder styling on the banner to show layout correctly %>
+      <div class="banner" style="border-bottom: 1px solid black; height: 350px">
+      <img src="" alt="">
+      </div>
 
-<%# displays the landmark information %>
-<div class="landmark-info">
-  <h1><%= @landmark.name %></h1>
-  <div class="description">
-    <%= @landmark.description %>
+      <%# displays the landmark information %>
+      <div class="landmark-info">
+        <h1><%= @landmark.name %></h1>
+        <div class="description">
+          <%= @landmark.description %>
+        </div>
+        <div class="price-per-day" data-price-per-day="<%= @landmark.price_per_day %>">
+          £ <%= @landmark.price_per_day %>
+        </div>
+      </div>
+
+      <%# displays the host avatar and the host name %>
+      <div class="host_info">
+        <img src="" alt="" id="host-avatar">
+        <div class="host_name"><%= @landmark.user.first_name %> <%= @landmark.user.last_name %></div>
+      </div>
+
+      <%# Need to place the booking form here  %>
+
+      <h1>New Booking</h1>
+      <div class="widget-content" data-unavailable="<%= @landmark.unavailable_dates.to_json %>">
+        <%= render 'bookings/form', { landmark:@landmark, booking:@booking } %>
+      </div>
+    </div>
   </div>
 </div>
-
-<%# displays the host avatar and the host name %>
-<div class="host_info">
-  <img src="" alt="" id="host-avatar">
-  <div class="host_name"><%= @landmark.user.first_name %> <%= @landmark.user.last_name %></div>
-</div>
-
-<%# Need to place the booking form here  %>

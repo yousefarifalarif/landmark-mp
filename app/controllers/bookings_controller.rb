@@ -4,11 +4,6 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user: current_user)
   end
 
-  def new
-    @landmark = Landmark.find(params[:landmark_id])
-    @booking = Booking.new
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
