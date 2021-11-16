@@ -27,7 +27,7 @@
   <div class="card-deck">
     <% @landmarks.each do |l| %>
       <div class="card">
-        <img src="assets/buckingham.jpg" class="card-img-top" alt="...">
+        <%= cl_image_tag l.photo.key, crop: :fill %>
         <div class="card-body">
           <h4 class="card-title"><%= l.name %></h4>
           <p class="card-text"><%= l.location %></p>
