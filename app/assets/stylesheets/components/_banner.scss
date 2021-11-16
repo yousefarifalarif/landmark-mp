@@ -1,3 +1,13 @@
 .banner {
   height: 240px;
 }
+
+.landmark-banner {
+  background: url(https://source.unsplash.com/random);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid black;
+  height: 400px;
+  width: 100%;
+}
