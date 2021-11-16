@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h1>Booking</h1>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-info">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+          <%= value %>
+        </div>
+      <% end %>
+      <h3><%= @booking.landmark.name %></h3>
+      <p><%= @booking.landmark.location %></p>
+      <p><%= @booking.landmark.description %></p>
+      <p><%= @booking.landmark.price_per_day %></p>
+      <p><%= @booking.start_date %></p>
+      <p><%= @booking.end_date %></p>
+      <p><%= @booking.special_request %></p>
+      <p><%= @booking.total_price %></p>
+    </div>
+  </div>
+</div>
