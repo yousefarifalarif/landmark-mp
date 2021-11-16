@@ -30,6 +30,7 @@ class LandmarksController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   private
