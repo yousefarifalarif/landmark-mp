@@ -3,7 +3,12 @@ class LandmarksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @landmarks = Landmark.all
+    if params[:query].present?
+      @query = params[:query]
+      @landmarks = Landmark.where("name LIKE ? OR location LIKE ? ", "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @landmarks = Landmark.all
+    end
   end
 
   def new
