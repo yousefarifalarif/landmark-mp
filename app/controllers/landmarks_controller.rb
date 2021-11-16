@@ -1,8 +1,14 @@
 class LandmarksController < ApplicationController
+  before_action :select_landmark, only: [:show]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @landmarks = Landmark.all
+    if params[:query].present?
+      @query = params[:query]
+      @landmarks = Landmark.where("name LIKE ? OR location LIKE ? ", "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @landmarks = Landmark.all
+    end
   end
 
   def new
@@ -19,9 +25,20 @@ class LandmarksController < ApplicationController
     end
   end
 
+  def my_landmarks
+    @landmarks = Landmark.where(user: current_user)
+  end
+
+  def show
+  end
+
   private
 
   def landmark_params
     params.require(:landmark).permit(:name, :location, :description, :price_per_day)
+  end
+
+  def select_landmark
+    @landmark = Landmark.find(params[:id])
   end
 end

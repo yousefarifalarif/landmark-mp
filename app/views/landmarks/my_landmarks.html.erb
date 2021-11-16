@@ -1,0 +1,18 @@
+<h1>My Landmarks</h1>
+<div class="cards">
+  <%@landmarks.each do |landmark|%>
+  <div class="card-trip">
+    <img src="https://source.unsplash.com/random" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= landmark.name %></h2>
+        <p><%= landmark.location %></p>
+        <p><%= landmark.description %></p>
+      </div>
+      <h2 class="card-trip-pricing">£<%= landmark.price_per_day.to_i %> per day</h2>
+    </div>
+  </div>
+  <%end%>
+</div>
+
+<%= link_to 'back', landmarks_path %>
