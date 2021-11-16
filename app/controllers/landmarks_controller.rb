@@ -20,6 +20,10 @@ class LandmarksController < ApplicationController
     end
   end
 
+  def my_landmarks
+    @landmarks = Landmark.where(user: current_user)
+  end
+
   def show
   end
 
