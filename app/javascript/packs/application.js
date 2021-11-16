@@ -16,4 +16,7 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-toggleDateInputs();
+const pricePerDay = parseFloat(document.querySelector(".price-per-day").dataset.pricePerDay);
+if (pricePerDay === null) {
+  toggleDateInputs();
+}
