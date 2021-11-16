@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :landmarks, only: %i[index new create] do
     resources :bookings, only: %i[new create]
   end
+  resources :bookings, only: %i[index show]
 end

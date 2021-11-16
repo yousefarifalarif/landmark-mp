@@ -1,0 +1,7 @@
+<%= simple_form_for [@landmark, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :total_price, disabled: true%>
+  <%= f.input :special_request %>
+  <%= f.submit %>
+<% end %>

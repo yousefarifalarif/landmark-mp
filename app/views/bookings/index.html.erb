@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h1>Booking</h1>
+      <% @bookings.each do |booking| %>
+        <h3><%= link_to booking.landmark.name, booking_path(booking) %></h3>
+      <% end %>
+    </div>
+  </div>
+</div>
