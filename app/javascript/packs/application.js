@@ -17,6 +17,7 @@ import "controllers"
 import "bootstrap"
 
 const priceInput = document.getElementById("booking_total_price");
+console.log(priceInput);
 if (priceInput != null) {
   toggleDateInputs();
 }

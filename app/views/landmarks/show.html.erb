@@ -12,7 +12,7 @@
         </div>
         <div class="host-info">
           <h2>Hosted by:</h2>
-          <div class="avatar host-avatar"></div>
+          <div><%= cl_image_tag @landmark.user.photo.key, crop: :fill, class:"avatar-large"%></div>
           <div class="host_name"><%= @landmark.user.first_name %> <%= @landmark.user.last_name %></div>
         </div>
       </div>

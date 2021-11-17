@@ -31,16 +31,18 @@
           <div class="row mx-0">
             <% m.each do |l| %>
               <div class="col-4">
-                <div class="card-trip">
+                <%= link_to landmark_path(l), class:"card-trip" do %>
+                  <div class="card-trip">
                   <%= cl_image_tag l.photo.key, crop: :fill %>
-                  <div class="card-trip-infos">
-                    <div>
-                      <h2><%= link_to l.name, landmark_path(l) %></h2>
-                      <p><%= l.location %></p>
+                    <div class="card-trip-infos">
+                      <div>
+                        <h2><%= l.name %></h2>
+                        <p><%= l.location %></p>
+                      </div>
+                      <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
                     </div>
-                    <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
                   </div>
-                </div>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -67,8 +69,8 @@
           <div class="row mx-0">
             <% m.each do |l| %>
               <div class="col-4">
-                <div class="card-trip">
-                  <%= link_to landmark_path(l) do %>
+                <%= link_to landmark_path(l) do %>
+                  <div class="card-trip">
                     <%= cl_image_tag l.photo.key, crop: :fill %>
                     <div class="card-trip-infos">
                       <div>
@@ -77,8 +79,8 @@
                       </div>
                       <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
                     </div>
-                  <% end %>
-                </div>
+                  </div>
+                <% end %>
               </div>
             <% end %>
           </div>
