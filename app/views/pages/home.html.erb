@@ -59,7 +59,8 @@
   </div>
 
 
-  <h2 class="pt-4 pb-4 pr-4">Hottest Landmarks</h2>
+  <div class="container p-4">
+  <h2 class="pt-4 pb-4 pr-4">Newest Landmarks</h2>
   <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <%@hottest.each_slice(3).with_index do |m, index|%>
@@ -68,16 +69,14 @@
             <% m.each do |l| %>
               <div class="col-4">
                 <div class="card-trip">
-                  <%= link_to landmark_path(l) do %>
-                    <%= cl_image_tag l.photo.key, crop: :fill %>
-                    <div class="card-trip-infos">
-                      <div>
-                        <h2><%= l.name %></h2>
-                        <p><%= l.location %></p>
-                      </div>
-                      <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
+                  <%= cl_image_tag l.photo.key, crop: :fill %>
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= link_to l.name, landmark_path(l) %></h2>
+                      <p><%= l.location %></p>
                     </div>
-                  <% end %>
+                    <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
+                  </div>
                 </div>
               </div>
             <% end %>
