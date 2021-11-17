@@ -16,7 +16,7 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-const pricePerDay = parseFloat(document.querySelector(".price-per-day").dataset.pricePerDay);
-if (pricePerDay === null) {
+const priceInput = document.getElementById("booking_total_price");
+if (priceInput != null) {
   toggleDateInputs();
 }
