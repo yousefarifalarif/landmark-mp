@@ -1,12 +1,13 @@
 import flatpickr from 'flatpickr';
 
 // get price of current item
-const pricePerDay = parseFloat(document.querySelector(".price-per-day").dataset.pricePerDay);
-const priceInput = document.getElementById("booking_total_price");
-const totalPrice = document.getElementById("price");
-priceInput.hidden = true;
 
 const toggleDateInputs = function () {
+  const pricePerDay = parseFloat(document.querySelector(".price-per-day").dataset.pricePerDay);
+  const priceInput = document.getElementById("booking_total_price");
+  const totalPrice = document.getElementById("price");
+  priceInput.hidden = true;
+
   const startDateInput = document.getElementById('booking_start_date');
   const endDateInput = document.getElementById('booking_end_date');
 
