@@ -31,16 +31,18 @@
           <div class="row mx-0">
             <% m.each do |l| %>
               <div class="col-4">
-                <div class="card-trip">
+                <%= link_to landmark_path(l), class:"card-trip" do %>
+                  <div class="card-trip">
                   <%= cl_image_tag l.photo.key, crop: :fill %>
-                  <div class="card-trip-infos">
-                    <div>
-                      <h2><%= link_to l.name, landmark_path(l) %></h2>
-                      <p><%= l.location %></p>
+                    <div class="card-trip-infos">
+                      <div>
+                        <h2><%= l.name %></h2>
+                        <p><%= l.location %></p>
+                      </div>
+                      <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
                     </div>
-                    <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
                   </div>
-                </div>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -59,25 +61,26 @@
   </div>
 
 
-  <div class="container p-4">
-  <h2 class="pt-4 pb-4 pr-4">Newest Landmarks</h2>
-  <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <h2 class="pt-4 pb-4 pr-4">Hottest Landmarks</h2>
+  <div id="carouselExampleIntervalHot" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <%@hottest.each_slice(3).with_index do |m, index|%>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row mx-0">
             <% m.each do |l| %>
               <div class="col-4">
-                <div class="card-trip">
-                  <%= cl_image_tag l.photo.key, crop: :fill %>
-                  <div class="card-trip-infos">
-                    <div>
-                      <h2><%= link_to l.name, landmark_path(l) %></h2>
-                      <p><%= l.location %></p>
+                <%= link_to landmark_path(l) do %>
+                  <div class="card-trip">
+                    <%= cl_image_tag l.photo.key, crop: :fill %>
+                    <div class="card-trip-infos">
+                      <div>
+                        <h2><%= l.name %></h2>
+                        <p><%= l.location %></p>
+                      </div>
+                      <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
                     </div>
-                    <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
                   </div>
-                </div>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -85,11 +88,11 @@
       <%end%>
     </div>
 
-    <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
+    <button class="carousel-control-prev" type="button" data-target="#carouselExampleIntervalHot" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-target="#carouselExampleInterval" data-slide="next">
+    <button class="carousel-control-next" type="button" data-target="#carouselExampleIntervalHot" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </button>
