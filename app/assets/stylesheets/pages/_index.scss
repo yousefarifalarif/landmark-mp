@@ -1,5 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "my_landmarks";
 
 .card-category {
   background-size: cover;
@@ -15,4 +16,3 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-
