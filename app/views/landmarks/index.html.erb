@@ -1,20 +1,22 @@
-  <div class="row justify-content-center">
-      <h1>Landmarks</h1>
+<div class="container">
+  <div id="title">
+    <h1>Landmarks</h1>
   </div>
-
-<div class="row justify-content-center">
-        <% @landmarks.each do |l| %>
-              <div class="col-4">
-                <div class="card-trip ">
-                  <img src="https://source.unsplash.com/random" />
-                  <div class="card-trip-infos">
-                    <div>
-                      <h4><%= l.name %></h4>
-                      <p><strong><%= l.location %></strong></p>
-                      <p>£<%= l.price_per_day.to_i %> / day</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+  <div class="cards">
+    <%@landmarks.each do |landmark|%>
+    <div class="card-trip">
+    <%= link_to landmark_path(landmark), class:"card-trip" do %>
+      <%= cl_image_tag landmark.photo.key, crop: :fill %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= landmark.name %></h2>
+          <p><%= landmark.location %></p>
+          <p><%= landmark.description %></p>
+        </div>
+        <h2 class="card-trip-pricing">£<%= landmark.price_per_day.to_i %> per day</h2>
+      </div>
+      <% end %>
+    </div>
+    <%end%>
+  </div>
 </div>

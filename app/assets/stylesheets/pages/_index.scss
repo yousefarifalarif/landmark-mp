@@ -1,8 +1,8 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "my_landmarks";
-@import "landmark_details";
 
+@import "landmark_details";
 .card-category {
   background-size: cover;
   background-position: center;
@@ -17,3 +17,14 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+// .listing-card:hover{
+//   color: #167FFB;
+//   text-decoration: none;
+//   font-weight: 900;
+// }
+
+// .universe-padding {
+//   padding: 0 8%;
+// }
+
