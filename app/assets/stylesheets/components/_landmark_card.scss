@@ -16,6 +16,12 @@
   margin: 0;
 }
 
+.card-trip h3 {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
 .card-trip p {
   font-size: 12px;
   opacity: .7;
@@ -29,6 +35,11 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+}
+
+.card-trip-infos a {
+  text-decoration: none;
+  color: black;
 }
 
 .card-trip-infos .card-trip-user {

@@ -9,6 +9,8 @@ class PagesController < ApplicationController
     else
       @landmarks = Landmark.all
     end
+    @newest = @landmarks.order(created_at: :desc).first(6)
+    @hottest = @landmarks.sort_by { |landmark| landmark.bookings.count }.first(6)
   end
 
   def show
