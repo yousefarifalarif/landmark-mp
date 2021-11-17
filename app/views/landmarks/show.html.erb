@@ -1,30 +1,24 @@
+<%=cl_image_tag @landmark.photo.key, class:"landmark-banner"%>
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <%# placeholder styling on the banner to show layout correctly %>
-      <div class="banner" style="border-bottom: 1px solid black; height: 350px">
-      <img src="" alt="">
-      </div>
-
-      <%# displays the landmark information %>
+  <div class="layout">
+    <div class="landmark-container">
       <div class="landmark-info">
         <h1><%= @landmark.name %></h1>
         <div class="description">
-          <%= @landmark.description %>
+          <%= @landmark.description.capitalize %>
         </div>
         <div class="price-per-day" data-price-per-day="<%= @landmark.price_per_day %>">
-          £ <%= @landmark.price_per_day %>
+          £<%=@landmark.price_per_day.to_i %> per day
+        </div>
+        <div class="host-info">
+          <h2>Hosted by:</h2>
+          <div class="avatar host-avatar"></div>
+          <div class="host_name"><%= @landmark.user.first_name %> <%= @landmark.user.last_name %></div>
         </div>
       </div>
-
-      <%# displays the host avatar and the host name %>
-      <div class="host_info">
-        <img src="" alt="" id="host-avatar">
-        <div class="host_name"><%= @landmark.user.first_name %> <%= @landmark.user.last_name %></div>
-      </div>
-
-      <%# Need to place the booking form here  %>
-
+      <div class="map-placeholder"></div>
+    </div>
+    <div class="booking-form">
       <h1>New Booking</h1>
       <div class="widget-content" data-unavailable="<%= @landmark.unavailable_dates.to_json %>">
         <%= render 'bookings/form', { landmark:@landmark, booking:@booking } %>
