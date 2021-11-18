@@ -6,7 +6,7 @@
         <h1><%= @landmark.name.capitalize %></h1>
         <div class="description"><%= @landmark.description.capitalize %></div>
         <div class="location"><%= @landmark.location.capitalize %></div>
-        <div class="price-per-day" data-price-per-day="<%= @landmark.price_per_day %>"><strong>£<%=@landmark.price_per_day.to_i %> per day</strong></div>
+        <div class="price-per-day" data-price-per-day="<%= @landmark.price_per_day %>"><strong>£<%=number_with_delimiter(@landmark.price_per_day.to_i, :delimiter => ',')%> per day</strong></div>
         <div class="host-info">
           <p>Hosted by:</p>
           <div><%= cl_image_tag @landmark.user.photo.key, crop: :fill, class:"avatar-large"%></div>
