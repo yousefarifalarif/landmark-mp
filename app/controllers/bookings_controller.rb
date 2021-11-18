@@ -11,11 +11,13 @@ class BookingsController < ApplicationController
       flash[:alert] = 'Congratulations! Your booking has been confirmed.'
       redirect_to booking_path(@booking)
     else
-      render :new
+      render 'landmarks/show'
     end
   end
 
-  def show; end
+  def show
+    @review = Review.new()
+  end
 
   private
 

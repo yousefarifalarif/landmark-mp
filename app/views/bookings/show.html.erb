@@ -16,6 +16,15 @@
       <p><%= @booking.end_date %></p>
       <p><%= @booking.special_request %></p>
       <p>£ <%= @booking.total_price %></p>
+      <% if @booking.review %>
+        <hr>
+        <p><%= @booking.review.comment %></p>
+        <p><%= @booking.review.rating %></p>
+      <% elsif Date.today > @booking.end_date %>
+        <hr>
+        <h3>Leave a review!</h3>
+        <%= render 'reviews/form' %>
+      <% end %>
     </div>
   </div>
 </div>
