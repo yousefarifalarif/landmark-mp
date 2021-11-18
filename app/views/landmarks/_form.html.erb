@@ -1,8 +1,8 @@
 <%= simple_form_for(@landmark) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :location %>
-  <%= f.input :description %>
-  <%= f.input :price_per_day %>
+  <%= f.input :name, placeholder: "Offical Name" %>
+  <%= f.input :location, placeholder: "City" %>
+  <%= f.input :description, placeholder: "What makes this place special?" %>
+  <%= f.input :price_per_day, placeholder: "£ 100,000" %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <%= f.button :submit, "Create now", class: "btn btn-secondary" %>
 <% end %>
