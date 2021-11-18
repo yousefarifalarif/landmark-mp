@@ -33,13 +33,13 @@
               <div class="col-4">
                 <%= link_to landmark_path(l), class:"card-trip" do %>
                   <div class="card-trip">
-                  <%= cl_image_tag l.photo.key, crop: :fill %>
+                    <%= cl_image_tag l.photo.key %>
                     <div class="card-trip-infos">
                       <div>
                         <h2><%= l.name %></h2>
                         <p><%= l.location %></p>
                       </div>
-                      <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
+                      <h3 class="card-trip-pricing">£ <%= number_with_delimiter(l.price_per_day.to_i, :delimiter => ',') %> / day</h2>
                     </div>
                   </div>
                 <% end %>
@@ -71,13 +71,13 @@
               <div class="col-4">
                 <%= link_to landmark_path(l) do %>
                   <div class="card-trip">
-                    <%= cl_image_tag l.photo.key, crop: :fill %>
+                    <%= cl_image_tag l.photo.key %>
                     <div class="card-trip-infos">
                       <div>
                         <h2><%= l.name %></h2>
                         <p><%= l.location %></p>
                       </div>
-                      <h3 class="card-trip-pricing">£<%= l.price_per_day.to_i %> / day</h3>
+                      <h3 class="card-trip-pricing">£ <%= number_with_delimiter(l.price_per_day.to_i, :delimiter => ',') %> / day</h2>
                     </div>
                   </div>
                 <% end %>
