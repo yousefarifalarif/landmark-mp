@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :landmarks, only: %i[index new create show] do
     resources :bookings, only: %i[new create]
   end
-  resources :bookings, only: %i[index show]
+
+  resources :bookings, only: %i[index show] do
+    resources :payments, only: :new
+  end
   get 'my_landmarks', to: 'landmarks#my_landmarks', as: :my_landmarks
 end

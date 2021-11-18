@@ -8,7 +8,7 @@
           <%= @landmark.description.capitalize %>
         </div>
         <div class="price-per-day" data-price-per-day="<%= @landmark.price_per_day %>">
-          £<%=@landmark.price_per_day.to_i %> per day
+          <%=humanized_money_with_symbol(@landmark.price) %> per day
         </div>
         <div class="host-info">
           <h2>Hosted by:</h2>
