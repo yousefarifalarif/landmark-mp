@@ -6,7 +6,7 @@
         <h1><%= @landmark.name %></h1>
         <div class="description"><%= @landmark.description %></div>
         <div class="location"><%= @landmark.location %></div>
-        <div class="price-per-day" data-price-per-day="<%= @landmark.price_per_day %>">
+        <div class="price-per-day" data-price-per-day="<%= @landmark.price %>">
           <%=humanized_money_with_symbol(@landmark.price) %> per day
         </div>
         <div class="host-info">
