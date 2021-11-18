@@ -5,7 +5,7 @@ class LandmarksController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @landmarks = Landmark.where("name LIKE ? OR location LIKE ? ", "%#{params[:query]}%", "%#{params[:query]}%")
+      @landmarks = Landmark.where("name ILIKE ? OR location ILIKE ? ", "%#{@query}%", "%#{@query}%")
     else
       @landmarks = Landmark.all
     end

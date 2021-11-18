@@ -12,7 +12,7 @@
           <h2><%= landmark.name %></h2>
           <p><%= landmark.location %></p>
         </div>
-        <h3 class="card-trip-pricing">£<%= landmark.price_per_day.to_i %> per day</h3>
+        <h3 class="card-trip-pricing">£ <%= number_with_delimiter(landmark.price_per_day.to_i, :delimiter => ',') %> / day</h3>
       </div>
     </div>
     <%end%>
