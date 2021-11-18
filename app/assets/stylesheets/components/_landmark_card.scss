@@ -2,6 +2,14 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
+  color: black;
+}
+
+.card-trip:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+  transition: all.3s ease-in-out;
 }
 
 .card-trip > img {
@@ -27,7 +35,6 @@
   opacity: .7;
   margin: 0;
 }
-
 
 .card-trip .card-trip-infos {
   padding: 16px;

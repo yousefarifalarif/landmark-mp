@@ -30,7 +30,7 @@
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row mx-0">
             <% m.each do |l| %>
-              <div class="col-4">
+              <div data-aos="zoom-in" data-aos-duration="1000", class="col-4">
                 <%= link_to landmark_path(l), class:"card-trip" do %>
                   <div class="card-trip">
                     <%= cl_image_tag l.photo.key %>
@@ -68,8 +68,8 @@
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row mx-0">
             <% m.each do |l| %>
-              <div class="col-4">
-                <%= link_to landmark_path(l) do %>
+              <div data-aos="zoom-in" data-aos-duration="1000", class="col-4">
+                <%= link_to landmark_path(l), class:"card-trip" do %>
                   <div class="card-trip">
                     <%= cl_image_tag l.photo.key %>
                     <div class="card-trip-infos">

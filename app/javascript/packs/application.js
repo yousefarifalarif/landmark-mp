@@ -8,6 +8,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { toggleDateInputs } from '../components/booking';
+import { initStarRating } from '../plugins/init_star_rating';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 Rails.start()
 Turbolinks.start()
@@ -21,3 +24,7 @@ console.log(priceInput);
 if (priceInput != null) {
   toggleDateInputs();
 }
+
+initStarRating();
+
+AOS.init();

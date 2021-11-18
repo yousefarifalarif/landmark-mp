@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :bookings, only: %i[index show] do
     resources :payments, only: :new
+    resources :reviews, only: %i[new create]
   end
+  resources :reviews, only: [:destroy]
   get 'my_landmarks', to: 'landmarks#my_landmarks', as: :my_landmarks
 end

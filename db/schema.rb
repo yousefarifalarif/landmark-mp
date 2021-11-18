@@ -68,7 +68,18 @@ ActiveRecord::Schema.define(version: 2021_11_18_135413) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price_cents", default: 0, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_landmarks_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,4 +102,5 @@ ActiveRecord::Schema.define(version: 2021_11_18_135413) do
   add_foreign_key "bookings", "landmarks"
   add_foreign_key "bookings", "users"
   add_foreign_key "landmarks", "users"
+  add_foreign_key "reviews", "bookings"
 end
