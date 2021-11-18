@@ -7,20 +7,24 @@
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. Here are great landmarks for you:</p>
       <% else %>
-        <p>All <%= Landmark.count %> landmarks.</p>
+        <p>All <%= Landmark.count %> landmarks</p>
       <% end %>
     </div>
   </div>
 
   <div class="cards">
     <%@landmarks.each do |landmark|%>
-    <div class="card-trip" data-aos="zoom-in" data-aos-duration="1000">
-    <%= link_to landmark_path(landmark), class:"card-trip" do %>
-      <%= cl_image_tag landmark.photo.key %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= landmark.name %></h2>
-          <p><%= landmark.location %></p>
+    <div data-aos="zoom-in" data-aos-duration="1000", class="card-trip">
+      <%= link_to landmark_path(landmark), class:"card-trip" do %>
+        <div class="card-trip">
+          <%= cl_image_tag landmark.photo.key %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= landmark.name %></h2>
+              <p><%= landmark.location %></p>
+            </div>
+            <h3 class="card-trip-pricing">£ <%= number_with_delimiter(landmark.price_per_day.to_i, :delimiter => ',') %> / day</h3>
+          </div>
         </div>
         <h3><%= humanized_money_with_symbol(landmark.price) %></h3>
       </div>
