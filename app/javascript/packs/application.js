@@ -27,4 +27,4 @@ if (priceInput != null) {
 
 initStarRating();
 
-AOS.init();
+AOS.init({ once: true });
