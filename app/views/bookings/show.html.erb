@@ -12,16 +12,16 @@
       <p><%= @booking.landmark.location %></p>
       <p><%= @booking.landmark.description %></p>
 
-      <p><%= humanized_money_with_symbol(@booking.price) %></p>
+      <p><%= humanized_money_with_symbol(@booking.landmark.price) %></p>
       <p><%= @booking.start_date %></p>
       <p><%= @booking.end_date %></p>
       <p><%= @booking.special_request %></p>
-      <p><%= @booking.total_price %></p>
+      <p><%= humanized_money_with_symbol(@booking.total_price) %></p>
       <% if @booking.review %>
         <hr>
         <p><%= @booking.review.comment %></p>
         <p><% @booking.review.rating.times do %>
-          <i class="fas fa-star" style= "color: #EDB867;"></i>
+         <i class="fas fa-star" style= "color: #EDB867;"></i>
         <% end %></p>
         <%= link_to "Delete", review_path(@booking.review), method: :delete, data: { confirm: "Are you sure?" } %>
 

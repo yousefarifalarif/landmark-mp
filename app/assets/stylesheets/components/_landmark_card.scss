@@ -6,12 +6,12 @@
   color: black;
   width: 350px;
   margin-bottom: 20px;
+  transition: all.3s ease-in-out;
 }
 
 .card-trip:hover {
   text-decoration: none;
   transform: scale(1.02);
-  transition: all.3s ease-in-out;
 }
 
 .card-trip > img {

@@ -17,16 +17,20 @@ class BookingsController < ApplicationController
 
   def create
     landmark = Landmark.find(params[:landmark_id])
-    booking  = Booking.create!(landmark: landmark, price: landmark.price, state: 'pending', user: current_user)
+    booking  = Booking.new(booking_params)
+    booking.amount = landmark.price
+    booking.state = 'pending'
+    booking.user = current_user
+    booking.save!
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
         name: landmark.name,
-        # images: [cl_image_tag landmark.photo.key],
+        # images: [landmark.photo_url],
         amount: landmark.price_cents,
         currency: 'gbp',
-        quantity: 1
+        quantity: (booking.end_date - booking.start_date).to_i + 1
       }],
       success_url: booking_url(booking),
       cancel_url: booking_url(booking)
@@ -37,7 +41,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @review = Review.new()
+    @review = Review.new
   end
 
   private
