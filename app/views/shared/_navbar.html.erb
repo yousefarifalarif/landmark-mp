@@ -1,5 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <img src="https://www.linkpicture.com/q/3439492-01.png" style="width: 150px">
+  <% if current_page?(root_path)%>
+  <div class="navbar navbar-expand-sm navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
+  <% else %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-lewagon-white fixed-top mb-50">
+  <% end %>
+
+  <img src="https://i.imgur.com/vQpqFNU.png" style="width: 150px">
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,16 +18,17 @@
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Become Host", new_landmark_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%= link_to "Book Landmark", landmarks_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "My Bookings", bookings_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My Landmarks", my_landmarks_path, class: "nav-link" %>
+          <% if current_user.landmarks.empty? %>
+            <%= link_to "Become Host", new_landmark_path, class: "nav-link" %>
+          <% else %>
+            <%= link_to "My Landmarks", my_landmarks_path, class: "nav-link" %>
+          <% end %>
         </li>
         <li class="nav-item dropdown">
           <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -36,10 +42,10 @@
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Become Host", new_landmark_path, class: "nav-link" %>
+          <%= link_to "Book Landmark", landmarks_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Book Landmark", landmarks_path, class: "nav-link" %>
+          <%= link_to "Become Host", new_landmark_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Log in/Sign up", new_user_session_path, class: "nav-link" %>

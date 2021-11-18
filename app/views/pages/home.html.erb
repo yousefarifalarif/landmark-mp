@@ -22,8 +22,8 @@
 </div>
 
 
-<div class="container p-4">
-  <h2 class="pt-4 pb-4 pr-4">Newest Landmarks</h2>
+<div class="container">
+  <h2 class="pl-3 pb-3">Newest Landmarks</h2>
   <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <%@newest.each_slice(3).with_index do |m, index|%>
@@ -61,7 +61,7 @@
   </div>
 
 
-  <h2 class="pt-4 pb-4 pr-4">Hottest Landmarks</h2>
+  <h2 class="p-3 pt-5">Hottest Landmarks</h2>
   <div id="carouselExampleIntervalHot" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <%@hottest.each_slice(3).with_index do |m, index|%>
