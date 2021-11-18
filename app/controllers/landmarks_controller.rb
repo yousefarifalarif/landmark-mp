@@ -9,6 +9,12 @@ class LandmarksController < ApplicationController
     else
       @landmarks = Landmark.all
     end
+    # @markers = @landmarks.geocoded.map do |landmark|
+    #   {
+    #     lat: landmark.latitude,
+    #     lng: landmark.longitude
+    #   }
+    # end
   end
 
   def new
@@ -31,6 +37,7 @@ class LandmarksController < ApplicationController
 
   def show
     @booking = Booking.new
+    @markers = [{ lat: @landmark.latitude, lng: @landmark.longitude }]
   end
 
   private
