@@ -26,23 +26,21 @@
   <h2 class="pt-4 pb-4 pr-4">Newest Landmarks</h2>
   <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-      <%@newest.each_slice(3).with_index do |m, index|%>
+      <% @newest.each_slice(3).with_index do |m, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row mx-0">
             <% m.each do |l| %>
               <div class="col-4">
-                <%= link_to landmark_path(l), class:"card-trip" do %>
-                  <div class="card-trip">
-                    <%= cl_image_tag l.photo.key %>
-                    <div class="card-trip-infos">
-                      <div>
-                        <h2><%= l.name %></h2>
-                        <p><%= l.location %></p>
-                      </div>
-                      <h3 class="card-trip-pricing">£ <%= number_with_delimiter(l.price_per_day.to_i, :delimiter => ',') %> / day</h2>
+                <div class="card-trip">
+                  <%= cl_image_tag l.photo.key %>
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= link_to l.name, landmark_path(l) %></h2>
+                      <p><%= l.location %></p>
                     </div>
+                    <h3 class="card-trip-pricing">£ <%= number_with_delimiter(l.price_per_day.to_i, :delimiter => ',') %> / day</h2>
                   </div>
-                <% end %>
+                </div>
               </div>
             <% end %>
           </div>

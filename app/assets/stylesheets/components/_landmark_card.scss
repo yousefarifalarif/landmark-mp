@@ -2,7 +2,15 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
+  color: black;
 }
+
+// .card-trip:hover {
+//   transform: scale(1.05);
+//   transition: all .3s ease-in-out;
+//   text-decoration: none;
+// }
 
 .card-trip > img {
   height: 200px;
