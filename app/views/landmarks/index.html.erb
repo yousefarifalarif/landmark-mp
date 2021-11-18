@@ -26,6 +26,8 @@
             <h3 class="card-trip-pricing">£ <%= number_with_delimiter(landmark.price_per_day.to_i, :delimiter => ',') %> / day</h3>
           </div>
         </div>
+        <h3><%= humanized_money_with_symbol(landmark.price) %></h3>
+      </div>
       <% end %>
     </div>
     <%end%>

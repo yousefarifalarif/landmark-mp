@@ -39,7 +39,7 @@
                         <h2><%= l.name %></h2>
                         <p><%= l.location %></p>
                       </div>
-                      <h3 class="card-trip-pricing">£ <%= number_with_delimiter(l.price_per_day.to_i, :delimiter => ',') %> / day</h2>
+                      <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(l.price) %> / day</h2>
                     </div>
                   </div>
                 <% end %>
@@ -77,7 +77,7 @@
                         <h2><%= l.name %></h2>
                         <p><%= l.location %></p>
                       </div>
-                      <h3 class="card-trip-pricing">£ <%= number_with_delimiter(l.price_per_day.to_i, :delimiter => ',') %> / day</h2>
+                      <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(l.price) %> / day</h2>
                     </div>
                   </div>
                 <% end %>

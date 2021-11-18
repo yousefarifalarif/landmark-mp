@@ -64,13 +64,12 @@ justify-content: center;
   }
 }
 
-.map-placeholder {
-  background-image: url(https://i2-prod.mylondon.news/incoming/article9313114.ece/ALTERNATES/s1200b/Untitled.jpg);
-  background-position: center;
-  background-size: cover;
+.map {
   width: 600px;
   height: 400px;
   margin: 50px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 }
 
 .layout {
