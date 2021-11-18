@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_135413) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"
     t.string "checkout_session_id"
-    t.integer "price_cents", default: 0, null: false
+    t.integer "amount_cents", default: 0, null: false
     t.index ["landmark_id"], name: "index_bookings_on_landmark_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 2021_11_18_135413) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "price_cents", default: 0, null: false
     t.float "latitude"
     t.float "longitude"
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_landmarks_on_user_id"
   end
 
