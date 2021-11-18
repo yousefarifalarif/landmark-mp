@@ -3,11 +3,11 @@ class Landmark < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_one_attached :photo
   monetize :price_cents
-  geocoded_by :name
+  geocoded_by :address
 
   validates :user, :name, :location, :description, presence: true
 
-  after_validation :geocode, if: :will_save_change_to_name?
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def unavailable_dates
     bookings.pluck(:start_date, :end_date).map do |range|
