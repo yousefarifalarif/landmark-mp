@@ -9,12 +9,12 @@ class LandmarksController < ApplicationController
     else
       @landmarks = Landmark.all
     end
-    # @markers = @landmarks.geocoded.map do |landmark|
-    #   {
-    #     lat: landmark.latitude,
-    #     lng: landmark.longitude
-    #   }
-    # end
+    @markers = @landmarks.geocoded.map do |landmark|
+      {
+        lat: landmark.latitude,
+        lng: landmark.longitude
+      }
+    end
   end
 
   def new

@@ -12,22 +12,29 @@
     </div>
   </div>
 
-  <div class="cards">
-    <%@landmarks.each do |landmark|%>
-      <div data-aos="zoom-in" data-aos-duration="1000">
-        <%= link_to landmark_path(landmark), class:"card-trip" do %>
-          <div class="card-trip">
-            <%= cl_image_tag landmark.photo.key %>
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= landmark.name %></h2>
-                <p><%= landmark.location %></p>
+  <div class="card-container">
+    <div class="cards-index">
+      <%@landmarks.each do |landmark|%>
+        <div data-aos="zoom-in" data-aos-duration="1000">
+          <%= link_to landmark_path(landmark), class:"card-trip" do %>
+            <div class="card-trip">
+              <%= cl_image_tag landmark.photo.key %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= landmark.name %></h2>
+                  <p><%= landmark.location %></p>
+                </div>
+                <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(landmark.price) %> / day</h2>
               </div>
-              <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(landmark.price) %> / day</h2>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
+      <%end%>
+    </div>
+    <div class="map-index"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-    <%end%>
   </div>
 </div>
