@@ -11,11 +11,12 @@
       <h3><%= @booking.landmark.name %></h3>
       <p><%= @booking.landmark.location %></p>
       <p><%= @booking.landmark.description %></p>
-      <p>£ <%= number_with_delimiter(@booking.landmark.price_per_day.to_i, :delimiter => ',') %></p>
+
+      <p><%= humanized_money_with_symbol(@booking.price) %></p>
       <p><%= @booking.start_date %></p>
       <p><%= @booking.end_date %></p>
       <p><%= @booking.special_request %></p>
-      <p>£ <%= number_with_delimiter(@booking.total_price.to_i, :delimiter => ',') %></p>
+      <p><%= @booking.total_price %></p>
       <% if @booking.review %>
         <hr>
         <p><%= @booking.review.comment %></p>

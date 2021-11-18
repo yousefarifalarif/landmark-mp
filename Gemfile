@@ -71,3 +71,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User integration
 gem 'devise'
+
+# Product prices
+gem 'money-rails'
+
+# stripe gim
+gem 'stripe'

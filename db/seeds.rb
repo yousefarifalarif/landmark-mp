@@ -70,7 +70,7 @@ landmarks.each do |item|
     name: item[:name],
     location: "Berlin",
     description: "A #{adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
-    price_per_day: rand(50000...999000),
+    price: rand(50000...999000),
     user: yousef
   )
   file = URI.open(item[:url])
@@ -91,7 +91,7 @@ landmarks.each do |item|
     name: item[:name],
     location: "Dubai",
     description: "A #{adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
-    price_per_day: rand(50000...999000),
+    price: rand(50000...999000),
     user: max
   )
   file = URI.open(item[:url])
@@ -112,7 +112,7 @@ landmarks.each do |item|
     name: item[:name],
     location: "London",
     description: "A #{adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
-    price_per_day: rand(50000...999000),
+    price: rand(50000...999000),
     user: ethan
   )
   file = URI.open(item[:url])
@@ -133,7 +133,7 @@ landmarks.each do |item|
     name: item[:name],
     location: "Hong Kong",
     description: "A #{adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
-    price_per_day: rand(50000...999000),
+    price: rand(50000...999000),
     user: katie
   )
   file = URI.open(item[:url])
