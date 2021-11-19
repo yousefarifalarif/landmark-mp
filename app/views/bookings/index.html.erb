@@ -27,6 +27,17 @@
                   <div>
                     <h2><%= booking.landmark.name %></h2>
                     <p><%= booking.landmark.location %></p>
+                    <% sum = 0 %>
+                    <% count = 0 %>
+                    <% booking.landmark.bookings.each do |booking|%>
+                    <% if booking.review.present? %>
+                    <% sum += booking.review.rating %>
+                    <% count +=1 %>
+                    <% end %>
+                    <% end %>
+                  <% (sum / count).times do %>
+                  <i class="fas fa-star" style= "color: #EDB867;"></i>
+                  <% end %>
                   </div>
                   <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(booking.landmark.price) %> / day</h2>
                 </div>
@@ -57,6 +68,17 @@
                   <div>
                     <h2><%= booking.landmark.name %></h2>
                     <p><%= booking.landmark.location %></p>
+                    <% sum = 0 %>
+                    <% count = 0 %>
+                    <% booking.landmark.bookings.each do |booking|%>
+                    <% if booking.review.present? %>
+                    <% sum += booking.review.rating %>
+                    <% count +=1 %>
+                    <% end %>
+                    <% end %>
+                    <% (sum / count).times do %>
+                    <i class="fas fa-star" style= "color: #EDB867;"></i>
+                    <% end %>
                   </div>
                   <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(booking.landmark.price) %> / day</h2>
                 </div>
