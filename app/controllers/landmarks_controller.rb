@@ -12,7 +12,8 @@ class LandmarksController < ApplicationController
     @markers = @landmarks.geocoded.map do |landmark|
       {
         lat: landmark.latitude,
-        lng: landmark.longitude
+        lng: landmark.longitude,
+        map_popup: render_to_string(partial: "map_popup", locals: { landmark: landmark })
       }
     end
   end
@@ -38,7 +39,7 @@ class LandmarksController < ApplicationController
 
   def show
     @booking = Booking.new
-    @markers = [{ lat: @landmark.latitude, lng: @landmark.longitude }]
+    @markers = [{ lat: @landmark.latitude, lng: @landmark.longitude, map_popup: render_to_string(partial: "map_popup", locals: { landmark: @landmark }) }]
   end
 
   private
