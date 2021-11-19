@@ -1,5 +1,5 @@
 class LandmarksController < ApplicationController
-  before_action :select_landmark, only: [:show]
+  before_action :select_landmark, only: %i[show destroy]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -10,10 +10,7 @@ class LandmarksController < ApplicationController
       @landmarks = Landmark.all
     end
     @markers = @landmarks.geocoded.map do |landmark|
-      {
-        lat: landmark.latitude,
-        lng: landmark.longitude
-      }
+      { lat: landmark.latitude, lng: landmark.longitude }
     end
   end
 
@@ -38,6 +35,11 @@ class LandmarksController < ApplicationController
   def show
     @booking = Booking.new
     @markers = [{ lat: @landmark.latitude, lng: @landmark.longitude }]
+  end
+
+  def destroy
+    @landmark.destroy
+    redirect_to my_landmarks_path
   end
 
   private

@@ -1,12 +1,12 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show]
+  before_action :find_booking, only: %i[show destroy]
+
   def index
     @bookings = Booking.where(user: current_user)
+    @my_booked_landmarks = Booking.joins(:landmark).where("landmarks.user_id = ?", current_user.id)
   end
 
   # def create
-  #   @booking = Booking.new(booking_params)
-  #   @booking.user = current_user
   #   if @booking.save!
   #     flash[:alert] = 'Congratulations! Your booking has been confirmed.'
   #     redirect_to booking_path(@booking)
@@ -17,31 +17,35 @@ class BookingsController < ApplicationController
 
   def create
     landmark = Landmark.find(params[:landmark_id])
-    booking  = Booking.new(booking_params)
-    booking.amount = landmark.price
-    booking.state = 'pending'
-    booking.user = current_user
-    booking.save!
+    @booking = Booking.new(booking_params)
+    @booking.amount = landmark.price
+    @booking.state = 'pending'
+    @booking.user = current_user
+    @booking.save!
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
         name: landmark.name,
-        # images: [landmark.photo_url],
         amount: landmark.price_cents,
         currency: 'gbp',
-        quantity: (booking.end_date - booking.start_date).to_i + 1
+        quantity: (@booking.end_date - @booking.start_date).to_i + 1
       }],
-      success_url: booking_url(booking),
-      cancel_url: booking_url(booking)
+      success_url: booking_url(@booking),
+      cancel_url: booking_url(@booking)
     )
 
-    booking.update(checkout_session_id: session.id)
-    redirect_to new_booking_payment_path(booking)
+    @booking.update(checkout_session_id: session.id)
+    redirect_to new_booking_payment_path(@booking)
   end
 
   def show
     @review = Review.new
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
