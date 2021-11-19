@@ -75,7 +75,7 @@ landmarks.each do |item|
     location: "Berlin",
     description: "A #{good_adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
     price: rand(5...99) * 1000,
-    user: max
+    user: max,
     address: "#{item[:name]}, Berlin"
   )
   file = URI.open(item[:url])
@@ -84,8 +84,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today - rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [yousef, ethan, katie].sample
-    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                               total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
     rating = rand(1..5)
     comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
@@ -94,8 +95,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today + rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [yousef, ethan, katie].sample
-    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                     total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'pending')
   end
 end
@@ -115,7 +117,7 @@ landmarks.each do |item|
     location: "Dubai",
     description: "A #{good_adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
     price: rand(5...99) * 1000,
-    user: yousef
+    user: yousef,
     address: "#{item[:name]}, Dubai"
   )
   file = URI.open(item[:url])
@@ -124,8 +126,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today - rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [max, ethan, katie].sample
-    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                               total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
     rating = rand(1..5)
     comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
@@ -134,8 +137,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today + rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [max, ethan, katie].sample
-    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                     total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'pending')
   end
 end
@@ -164,8 +168,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today - rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [max, yousef, katie].sample
-    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                               total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
     rating = rand(1..5)
     comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
@@ -174,8 +179,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today + rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [max, yousef, katie].sample
-    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                     total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'pending')
   end
 end
@@ -204,8 +210,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today - rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [max, yousef, ethan].sample
-    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                               total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
     rating = rand(1..5)
     comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
@@ -214,8 +221,9 @@ landmarks.each do |item|
 
   2.times do
     rand_st_d = Date.today + rand(5..30)
+    rand_ed_d = rand_st_d + rand(1..5)
     user = [max, yousef, ethan].sample
-    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_st_d + rand(1..5),
+    Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                     total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'pending')
   end
 end
