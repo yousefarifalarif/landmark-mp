@@ -1,18 +1,19 @@
 <%= cl_image_tag @landmark.photo.key, class:"landmark-banner"%>
+
 <div class="container">
   <div class="layout">
     <div class="landmark-container">
       <div class="landmark-info">
         <h1><%= @landmark.name %></h1>
-        <div class="description"><%= @landmark.description %></div>
-        <div class="location"><%= @landmark.location %></div>
-        <div class="price-per-day" data-price-per-day="<%= @landmark.price %>">
+        <p><div class="description"><%= @landmark.description %></div></p>
+        <h3><div class="location"><%= @landmark.location %></div></h3>
+        <h3><div class="price-per-day" data-price-per-day="<%= @landmark.price %>">
           <%=humanized_money_with_symbol(@landmark.price) %> per day
-        </div>
+        </div></h3>
         <div class="host-info">
           <p>Hosted by:</p>
           <div><%= cl_image_tag @landmark.user.photo.key, crop: :fill, class:"avatar-large"%></div>
-          <div class="host_name"><%= @landmark.user.first_name %> <%= @landmark.user.last_name %></div>
+          <p><div class="host_name"><%= @landmark.user.first_name %> <%= @landmark.user.last_name %></div></p>
         </div>
       </div>
       <div class="map"
@@ -22,7 +23,7 @@
       </div>
     </div>
     <div class="booking-form">
-      <h1>New Booking</h1>
+      <h2>New Booking</h2>
       <div class="widget-content" data-unavailable="<%= @landmark.unavailable_dates.to_json %>">
         <%= render 'bookings/form', { landmark:@landmark, booking:@booking } %>
       </div>
