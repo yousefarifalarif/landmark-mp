@@ -1,11 +1,23 @@
 <div class="container">
   <div class="row py-4">
-    <div class="col-md-3"><%= cl_image_tag @booking.landmark.photo.key, width: '100%' %></div>
-    <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @booking.landmark.name %></strong> for <strong><%= humanized_money_with_symbol @booking.total_price %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
 
+    <div class="col">
+      <div class="form-row">
+      <h1>Confirm and pay</h1>
+      <h2>Your trip</h2>
+      <p>dates</p>
+      <p><%= @booking.start_date %>-<%= @booking.end_date %> </p>
+
+        <div class="col-md-3"><%= cl_image_tag @booking.landmark.photo.key, width: '100%' %></div>
+      </div>
+      <h4>Cancellation policy</h2>
+      <p>Free cancellation for 48 hours</p>
+      <p>Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.</p>
+
+      <p>Purchase of <strong><%= @booking.landmark.name %></strong> for <strong><%= humanized_money_with_symbol @booking.total_price %></strong></p>
+
+
+      <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');

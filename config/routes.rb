@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:destroy]
   get 'my_landmarks', to: 'landmarks#my_landmarks', as: :my_landmarks
+  #stripe order status
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 end
