@@ -75,7 +75,7 @@ landmarks.each do |item|
     location: "Berlin",
     description: "A #{good_adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
     price: rand(5...99) * 1000,
-    user: max
+    user: max,
     address: "#{item[:name]}, Berlin"
   )
   file = URI.open(item[:url])
