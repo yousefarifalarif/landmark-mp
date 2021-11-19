@@ -80,3 +80,6 @@ gem 'stripe'
 
 # tabs
 gem 'rails-bootstrap-tabs', '~> 0.2.7'
+
+# event stripe
+gem 'stripe_event'

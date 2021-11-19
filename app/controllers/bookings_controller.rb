@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: landmark.name,
+        # images: [cl_image_path(landmark.photo.key)],
         amount: landmark.price_cents,
         currency: 'gbp',
         quantity: (@booking.end_date - @booking.start_date).to_i + 1
