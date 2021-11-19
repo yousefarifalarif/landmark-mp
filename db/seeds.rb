@@ -87,7 +87,7 @@ landmarks.each do |item|
   user = [yousef, ethan, katie].sample
   booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                             total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
-  rating = rand(1..5)
+  rating = rand(3..5)
   comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
   Review.create!(booking: booking, comment: comment, rating: rand(1..5))
 
@@ -124,7 +124,7 @@ landmarks.each do |item|
   user = [max, ethan, katie].sample
   booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                             total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
-  rating = rand(1..5)
+  rating = rand(3..5)
   comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
   Review.create!(booking: booking, comment: comment, rating: rand(1..5))
 
@@ -161,7 +161,7 @@ landmarks.each do |item|
   user = [max, yousef, katie].sample
   booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                             total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
-  rating = rand(1..5)
+  rating = rand(3..5)
   comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
   Review.create!(booking: booking, comment: comment, rating: rand(1..5))
 
@@ -198,7 +198,7 @@ landmarks.each do |item|
   user = [max, yousef, ethan].sample
   booking = Booking.create!(landmark: landmark, user: user, start_date: rand_st_d, end_date: rand_ed_d,
                             total_price: landmark.price * (rand_ed_d - rand_st_d + 1), state: 'accepted')
-  rating = rand(1..5)
+  rating = rand(3..5)
   comment = "A really #{rating >= 3 ? good_adj.sample : bad_adj.sample} place #{things.sample}."
   Review.create!(booking: booking, comment: comment, rating: rand(1..5))
 

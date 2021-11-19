@@ -1,33 +1,54 @@
 <div class="container">
-  <div class="row py-4">
-
-    <div class="col">
-      <div class="form-row">
-      <h1>Confirm and pay</h1>
-      <h2>Your trip</h2>
-      <p>dates</p>
-      <p><%= @booking.start_date %>-<%= @booking.end_date %> </p>
-
-        <div class="col-md-3"><%= cl_image_tag @booking.landmark.photo.key, width: '100%' %></div>
+  <div class="layout">
+  <div class="landmark-container">
+    <h1>Confirm and pay</h1>
+    <div class="landmark-info">
+      <%= cl_image_tag @booking.landmark.photo.key, class: "landmark-picture" %>
+      <h2><%= @booking.landmark.name %></h2>
+      <h3><div class="location"><%= @booking.landmark.location %></div></h3>
+      <h3><div class="price-per-day" data-price-per-day="<%= @booking.landmark.price %>">
+        <%=humanized_money_with_symbol(@booking.landmark.price) %> per day
+      </div></h3>
+      <div class="host-info">
+        <p>Hosted by:</p>
+        <div><%= cl_image_tag @booking.landmark.user.photo.key, crop: :fill, class:"avatar-large"%></div>
+        <p><div class="host_name"><%= @booking.landmark.user.first_name %> <%= @booking.landmark.user.last_name %></div></p>
       </div>
-      <h4>Cancellation policy</h2>
-      <p>Free cancellation for 48 hours</p>
-      <p>Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.</p>
-
-      <p>Purchase of <strong><%= @booking.landmark.name %></strong> for <strong><%= humanized_money_with_symbol @booking.total_price %></strong></p>
-
-
-      <button id="pay" class="btn btn-primary">Pay</button>
-      <script src="https://js.stripe.com/v3/"></script>
-      <script>
-        const paymentButton = document.getElementById('pay');
-        paymentButton.addEventListener('click', () => {
-          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-            sessionId: '<%= @booking.checkout_session_id %>'
-          });
-        });
-      </script>
     </div>
+  </div>
+  <div class="booking-overview" style="margin-top:140px">
+    <h2>Booking Details</h2>
+    <div class="dates">
+      <h4>Dates:</h4>
+      <p>From: <%= @booking.start_date %></p>
+      <p>To: <%= @booking.end_date %></p>
+    </div>
+
+    <div class="special_request">
+      <% if @booking.special_request %>
+        <h4>Your special request:</h4>
+        <p><%= @booking.special_request %></p>
+      <% end %>
+    </div>
+    <div class="total_price">
+      <h3>Total price:</h3>
+      <p><%= humanized_money_with_symbol(@booking.total_price) %></p>
+    </div>
+    <h4>Cancellation policy</h2>
+    <p>Free cancellation for 48 hours</p>
+    <p>Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.</p>
+
+    <p>Purchase of <strong><%= @booking.landmark.name %></strong> for <strong><%= humanized_money_with_symbol @booking.total_price %></strong></p>
+    <button id="pay" class="btn btn-primary w-100">Pay</button>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      const paymentButton = document.getElementById('pay');
+      paymentButton.addEventListener('click', () => {
+        const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+        stripe.redirectToCheckout({
+          sessionId: '<%= @booking.checkout_session_id %>'
+        });
+      });
+    </script>
   </div>
 </div>
