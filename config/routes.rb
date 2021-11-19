@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:destroy]
   get 'my_landmarks', to: 'landmarks#my_landmarks', as: :my_landmarks
+  get 'bookings/:id/accept', to: 'bookings#accept_booking', as: :accept_booking
+  get 'bookings/:id/decline', to: 'bookings#decline_booking', as: :decline_booking
 end

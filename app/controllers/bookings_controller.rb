@@ -1,9 +1,10 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: %i[show destroy]
+  before_action :find_booking, only: %i[show destroy accept_booking]
 
   def index
     @bookings = Booking.where(user: current_user)
-    @my_booked_landmarks = Booking.joins(:landmark).where("landmarks.user_id = ?", current_user.id)
+    @my_rentals = Booking.joins(:landmark).where("landmarks.user_id = ?", current_user.id).order(created_at: :desc)
+
   end
 
   # def create
@@ -48,6 +49,18 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
+  def accept_booking
+    @booking.state = 'accepted'
+    @booking.save!
+    redirect_to bookings_path
+  end
+
+  def decline_booking
+    @booking.state = 'declined'
+    @booking.save!
+    redirect_to bookings_path
+  end
+
   private
 
   def find_booking
@@ -58,4 +71,6 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date, :total_price, :special_request)
           .merge(params.permit(:landmark_id))
   end
+
+
 end
