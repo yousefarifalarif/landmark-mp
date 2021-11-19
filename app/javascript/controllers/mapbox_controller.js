@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
 export default class extends Controller {
@@ -17,6 +18,7 @@ export default class extends Controller {
 
     this._addMarkersToMap();
     this._fitMapToMarkers();
+    this.map.scrollZoom.disable();
   }
 
   _addMarkersToMap() {
@@ -31,7 +33,8 @@ export default class extends Controller {
 _fitMapToMarkers() {
   const bounds = new mapboxgl.LngLatBounds();
   this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  this.map.fitBounds(bounds, { padding: 20, maxZoom: 15, duration: 0 });
 }
+
 
 }

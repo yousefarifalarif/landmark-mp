@@ -1,17 +1,26 @@
 <div class="container">
-  <div id="title">
-    <h1>Landmarks</h1>
-  </div>
-  <div id="title" class="row">
-    <div class="col">
-      <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. Here are great landmarks for you:</p>
-      <% else %>
-        <p>All <%= Landmark.count %> landmarks</p>
-      <% end %>
+<div id="header">
+<div class="form-row form-index">
+    <div class="col-4">
+      <%= form_tag landmarks_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Look for landmark or location"
+        %>
+    </div>
+    <div class="form-row">
+      <%= submit_tag "Search", class: "btn btn-secondary" %>
+    <% end %>
     </div>
   </div>
-
+  <h1 id="title-index" ><% if @query %>
+    <p>Search results for <strong><%= @query %></strong>:</p>
+    <% else %>
+      <p>Showing all <%= Landmark.count %> landmarks</p>
+    <% end %>
+  </h1>
+</div>
   <div class="card-container">
     <div class="cards-index">
       <%@landmarks.each do |landmark|%>
