@@ -43,6 +43,7 @@ class BookingsController < ApplicationController
 
   def show
     @review = Review.new
+    @markers = [{ lat: @booking.landmark.latitude, lng: @booking.landmark.longitude, map_popup: render_to_string(partial: "map_popup", locals: { landmark: @booking.landmark }) }]
   end
 
   def destroy
