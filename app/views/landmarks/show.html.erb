@@ -11,17 +11,11 @@
           <%=humanized_money_with_symbol(@landmark.price) %> per day
         </div></h3>
         <div class="stars">
-          <% sum = 0 %>
-          <% count = 0 %>
-          <% @landmark.bookings.each do |booking|%>
-            <% if booking.review.present? %>
-            <% sum += booking.review.rating %>
-            <% count +=1 %>
-            <% end %>
-            <% end %>
-          <% (sum / count).times do %>
-          <i class="fas fa-star" style= "color: #EDB867;"></i>
+        <% if @landmark.reviews.average(:rating) %>
+          <% @landmark.reviews.average(:rating).to_i.times do %>
+            <i class="fas fa-star" style= "color: #EDB867;"></i>
           <% end %>
+        <% end %>
         </div>
         <div class="host-info">
           <p>Hosted by:</p>
