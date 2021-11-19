@@ -1,32 +1,75 @@
 
 <div class="container">
-  <h1>Booking</h1>
-  <% flash.each do |key, value| %>
-    <div class="alert alert-info">
-      <a href="#" data-dismiss="alert" class="close">×</a>
-      <%= value %>
+  <div class="layout">
+    <div class="landmark-container">
+
+      <div class="booking-title">
+        <h1>Booking Overview</h1>
+        <% flash.each do |key, value| %>
+          <div class="alert alert-info">
+            <a href="#" data-dismiss="alert" class="close">×</a>
+            <%= value %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="landmark-info">
+        <%= cl_image_tag @booking.landmark.photo.key, class: "landmark-picture" %>
+        <h2><%= @booking.landmark.name %></h2>
+        <h3><div class="location"><%= @booking.landmark.location %></div></h3>
+        <h3><div class="price-per-day" data-price-per-day="<%= @booking.landmark.price %>">
+          <%=humanized_money_with_symbol(@booking.landmark.price) %> per day
+        </div></h3>
+        <div class="host-info">
+          <p>Hosted by:</p>
+          <div><%= cl_image_tag @booking.landmark.user.photo.key, crop: :fill, class:"avatar-large"%></div>
+          <p><div class="host_name"><%= @booking.landmark.user.first_name %> <%= @booking.landmark.user.last_name %></div></p>
+        </div>
+      </div>
+
+      <div class="map"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
     </div>
-  <% end %>
-  <h3><%= @booking.landmark.name %></h3>
-  <p><%= @booking.landmark.location %></p>
-  <p><%= @booking.landmark.description %></p>
 
-  <p><%= humanized_money_with_symbol(@booking.landmark.price) %></p>
-  <p><%= @booking.start_date %></p>
-  <p><%= @booking.end_date %></p>
-  <p><%= @booking.special_request %></p>
-  <p><%= humanized_money_with_symbol(@booking.total_price) %></p>
-  <% if @booking.review %>
-    <hr>
-    <p><%= @booking.review.comment %></p>
-    <p><% @booking.review.rating.times do %>
-      <i class="fas fa-star" style= "color: #EDB867;"></i>
-    <% end %></p>
-    <%= link_to "Delete", review_path(@booking.review), method: :delete, data: { confirm: "Are you sure?" } %>
+    <div class="booking-overview">
+      <h2>Booking Details</h2>
+      <div class="dates">
+        <h4>Dates:</h4>
+        <p>From: <%= @booking.start_date %></p>
+        <p>To: <%= @booking.end_date %></p>
+      </div>
 
-  <% elsif Date.today > @booking.end_date %>
-    <hr>
-    <h3>Leave a review!</h3>
-    <%= render 'reviews/form' %>
-  <% end %>
+      <div class="special_request">
+        <% if @booking.special_request %>
+          <h4>Your special request:</h4>
+          <p><%= @booking.special_request %></p>
+        <% end %>
+      </div>
+      <div class="total_price">
+        <h3>Total price:</h3>
+        <p><%= humanized_money_with_symbol(@booking.total_price) %></p>
+      </div>
+
+      <div class="review">
+        <% if @booking.review %>
+          <h4>Recent review:</h4>
+          <p><%= @booking.review.comment %></p>
+          <p><% @booking.review.rating.times do %>
+            <i class="fas fa-star" style= "color: #EDB867;"></i>
+          <% end %></p>
+          <%= link_to "Delete", review_path(@booking.review), method: :delete, data: { confirm: "Are you sure?" } %>
+
+        <% elsif Date.today > @booking.end_date %>
+          <hr>
+          <h3>Leave a review!</h3>
+          <%= render 'reviews/form' %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 </div>
