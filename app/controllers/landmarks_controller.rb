@@ -50,7 +50,7 @@ class LandmarksController < ApplicationController
   private
 
   def landmark_params
-    params.require(:landmark).permit(:name, :location, :description, :price_per_day, :photo)
+    params.require(:landmark).permit(:name, :location, :description, :price, :photo)
   end
 
   def select_landmark
