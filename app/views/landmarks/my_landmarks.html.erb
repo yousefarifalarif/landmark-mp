@@ -3,24 +3,30 @@
     <h1>My Landmarks</h1>
     <%= link_to "Add Landmark", new_landmark_path, class:"btn btn-secondary", id:"add-landmark-btn"%>
   </div>
-  <div class="container">
-    <div class="cards">
-      <%@landmarks.each do |landmark|%>
-        <div data-aos="zoom-in" data-aos-duration="1000">
-          <%= link_to landmark_path(landmark), class:"card-trip" do %>
-            <div class="card-trip">
-              <%= cl_image_tag landmark.photo.key %>
-              <div class="card-trip-infos">
-                <div>
-                  <h2><%= landmark.name %></h2>
-                  <p><%= landmark.location %></p>
-                </div>
-                <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(landmark.price) %> / day</h2>
-              </div>
+  <div class="cards">
+    <%@landmarks.each do |landmark|%>
+      <div data-aos="zoom-in" data-aos-duration="1000">
+        <%= link_to landmark_path(landmark), class:"card-trip" do %>
+          <div class="card-trip">
+            <%= cl_image_tag landmark.photo.key %>
+            <div class='card-remove-link'>
+              <%= link_to edit_landmark_path(landmark) do %>
+                <i class="fas fa-pencil-alt"></i>
+              <% end %>
+              <%= link_to landmark_path(landmark), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
             </div>
-          <% end %>
-        </div>
-      <%end%>
-    </div>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= landmark.name %></h2>
+                <p><%= landmark.location %></p>
+              </div>
+              <h3 class="card-trip-pricing"><%= humanized_money_with_symbol(landmark.price) %> / day</h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <%end%>
   </div>
 </div>

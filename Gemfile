@@ -77,3 +77,6 @@ gem 'money-rails'
 
 # stripe gim
 gem 'stripe'
+
+# tabs
+gem 'rails-bootstrap-tabs', '~> 0.2.7'

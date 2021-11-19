@@ -1,35 +1,31 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <h1>Booking</h1>
-      <% flash.each do |key, value| %>
-        <div class="alert alert-info">
-          <a href="#" data-dismiss="alert" class="close">×</a>
-          <%= value %>
-        </div>
-      <% end %>
-      <h3><%= @booking.landmark.name %></h3>
-      <p><%= @booking.landmark.location %></p>
-      <p><%= @booking.landmark.description %></p>
-
-      <p><%= humanized_money_with_symbol(@booking.landmark.price) %></p>
-      <p><%= @booking.start_date %></p>
-      <p><%= @booking.end_date %></p>
-      <p><%= @booking.special_request %></p>
-      <p><%= humanized_money_with_symbol(@booking.total_price) %></p>
-      <% if @booking.review %>
-        <hr>
-        <p><%= @booking.review.comment %></p>
-        <p><% @booking.review.rating.times do %>
-         <i class="fas fa-star" style= "color: #EDB867;"></i>
-        <% end %></p>
-        <%= link_to "Delete", review_path(@booking.review), method: :delete, data: { confirm: "Are you sure?" } %>
-
-      <% elsif Date.today > @booking.end_date %>
-        <hr>
-        <h3>Leave a review!</h3>
-        <%= render 'reviews/form' %>
-      <% end %>
+  <h1>Booking</h1>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-info">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <%= value %>
     </div>
-  </div>
+  <% end %>
+  <h3><%= @booking.landmark.name %></h3>
+  <p><%= @booking.landmark.location %></p>
+  <p><%= @booking.landmark.description %></p>
+
+  <p><%= humanized_money_with_symbol(@booking.landmark.price) %></p>
+  <p><%= @booking.start_date %></p>
+  <p><%= @booking.end_date %></p>
+  <p><%= @booking.special_request %></p>
+  <p><%= humanized_money_with_symbol(@booking.total_price) %></p>
+  <% if @booking.review %>
+    <hr>
+    <p><%= @booking.review.comment %></p>
+    <p><% @booking.review.rating.times do %>
+      <i class="fas fa-star" style= "color: #EDB867;"></i>
+    <% end %></p>
+    <%= link_to "Delete", review_path(@booking.review), method: :delete, data: { confirm: "Are you sure?" } %>
+
+  <% elsif Date.today > @booking.end_date %>
+    <hr>
+    <h3>Leave a review!</h3>
+    <%= render 'reviews/form' %>
+  <% end %>
 </div>
