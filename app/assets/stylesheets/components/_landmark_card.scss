@@ -107,38 +107,6 @@
   text-decoration: none;
 }
 
-.card-status {
-  border-radius: 4px;
-  padding: 4px 8px;
-  min-width: 80px;
-  text-align: center;
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  font-size: 16px;
-  font-weight: lighter;
-  background: rgba(white, 0.3);
-}
-.card-status.pending{
-  border: 1px solid #eea840;
-  color: #eea840;
-}
-.card-status.accepted{
-  border: 1px solid #40ee8e;
-  color: #40ee8e;
-}
-.card-status.declined{
-  border: 1px solid #ee4640;
-  color: #ee4640;
-}
-.card-status-bg {
-  width:100%;
-  height:100%;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  background: rgba(grey, 0.6);
-}
 .card-links {
   a {
     padding-left: 16px;

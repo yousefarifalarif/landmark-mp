@@ -19,12 +19,12 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-const priceInput = document.getElementById("booking_total_price");
-console.log(priceInput);
-if (priceInput != null) {
-  toggleDateInputs();
-}
+document.addEventListener('turbolinks:load', ()=> {
+  if (document.getElementById("booking_total_price")) {
+    console.log("found price input!")
+    toggleDateInputs();
+  }
+  initStarRating();
 
-initStarRating();
-
-AOS.init({ once: true });
+  AOS.init({ once: true });
+});

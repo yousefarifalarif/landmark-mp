@@ -9,7 +9,7 @@
         <%= link_to landmark_path(landmark), class:"card-trip" do %>
           <div class="card-trip">
             <%= cl_image_tag landmark.photo.key %>
-            <div class='card-remove-link'>
+            <div class='card-links'>
               <%= link_to edit_landmark_path(landmark) do %>
                 <i class="fas fa-pencil-alt"></i>
               <% end %>
