@@ -17,6 +17,8 @@
               <div class="card-booking-image"><%= cl_image_tag booking.landmark.photo.key %></div>
               <% if booking.state == 'pending' %>
                 <div class='card-status pending'><%= booking.state.capitalize %></div>
+              <% elsif booking.state == 'paid' %>
+                <div class='card-status paid'><%= booking.state.capitalize %></div>
               <% elsif booking.state == 'accepted' %>
                 <div class='card-status accepted'><%= booking.state.capitalize %></div>
               <% elsif booking.state == 'declined' %>
@@ -54,11 +56,13 @@
     <div id="mybooking" class="pt-3 tab-pane">
       <div class="cards-booking">
           <% @bookings.each do |booking| %>
-            <%= link_to booking_path(booking) do %>
-              <div class="card-booking">
+            <div class="card-booking">
+              <%= link_to booking_path(booking) do %>
                 <div class="card-booking-image"><%= cl_image_tag booking.landmark.photo.key %></div>
                 <% if booking.state == 'pending' %>
                   <div class='card-status pending'><%= booking.state.capitalize %></div>
+                <% elsif booking.state == 'paid' %>
+                  <div class='card-status paid'><%= booking.state.capitalize %></div>
                 <% elsif booking.state == 'accepted' %>
                   <div class='card-status accepted'><%= booking.state.capitalize %></div>
                 <% elsif booking.state == 'declined' %>
@@ -77,18 +81,10 @@
                     <%= link_to booking_path(booking), method: :delete, data: { confirm: 'Are you sure?'} do %>
                       <i class="far fa-trash-alt"></i>
                     <% end %>
-                    <% if booking.state == 'pending' %>
-                      <%= link_to accept_booking_path(booking) do %>
-                        <i class="fas fa-check-circle" style="color: #51ce89"></i>
-                      <% end %>
-                      <%= link_to decline_booking_path(booking) do %>
-                        <i class="fas fa-times-circle" style="color: #ee4640"></i>
-                      <% end %>
-                    <% end %>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           <% end %>
       </div>
     </div>
