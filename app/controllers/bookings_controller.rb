@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: %i[show destroy accept_booking]
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = Booking.where(user: current_user).order(created_at: :desc)
     @my_rentals = Booking.joins(:landmark).where("landmarks.user_id = ?", current_user.id).order(created_at: :desc)
 
   end
