@@ -10,6 +10,19 @@
         <h3><div class="price-per-day" data-price-per-day="<%= @landmark.price %>">
           <%=humanized_money_with_symbol(@landmark.price) %> per day
         </div></h3>
+        <div class="stars">
+          <% sum = 0 %>
+          <% count = 0 %>
+          <% @landmark.bookings.each do |booking|%>
+            <% if booking.review.present? %>
+            <% sum += booking.review.rating %>
+            <% count +=1 %>
+            <% end %>
+            <% end %>
+          <% (sum / count).times do %>
+          <i class="fas fa-star" style= "color: #EDB867;"></i>
+          <% end %>
+        </div>
         <div class="host-info">
           <p>Hosted by:</p>
           <div><%= cl_image_tag @landmark.user.photo.key, crop: :fill, class:"avatar-large"%></div>
@@ -20,6 +33,21 @@
         data-controller="mapbox"
         data-mapbox-markers-value="<%= @markers.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+      <div class="review-container">
+      <h2>Reviews</h2>
+        <div class="review">
+          <% @landmark.bookings.each do |booking| %>
+          <% if booking.review.present? %>
+          <p class="comment"><%= booking.review.comment %>
+          <% booking.review.rating.times do %>
+            <i class="fas fa-star" style= "color: #EDB867;"></i>
+            <% end %>
+          </p>
+
+          <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="booking-form">
