@@ -76,6 +76,7 @@ landmarks.each do |item|
     description: "A #{good_adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
     price: rand(5...99) * 1000,
     user: max
+    address: "#{item[:name]}, Berlin"
   )
   file = URI.open(item[:url])
   landmark.photo.attach(io: file, filename: "#{item[:name]}.png", content_type: 'image/png')
@@ -115,6 +116,7 @@ landmarks.each do |item|
     description: "A #{good_adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
     price: rand(5...99) * 1000,
     user: yousef
+    address: "#{item[:name]}, Dubai"
   )
   file = URI.open(item[:url])
   landmark.photo.attach(io: file, filename: "#{item[:name]}.png", content_type: 'image/png')
@@ -153,7 +155,8 @@ landmarks.each do |item|
     location: "London",
     description: "A #{good_adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
     price: rand(5...99) * 1000,
-    user: ethan
+    user: ethan,
+    address: "#{item[:name]}, London"
   )
   file = URI.open(item[:url])
   landmark.photo.attach(io: file, filename: "#{item[:name]}.png", content_type: 'image/png')
@@ -192,7 +195,8 @@ landmarks.each do |item|
     location: "Hong Kong",
     description: "A #{good_adj.sample} place #{things.sample}, #{things.sample} and #{things.sample}",
     price: rand(5...99) * 1000,
-    user: katie
+    user: katie,
+    address: "#{item[:name]}, Hong Kong"
   )
   file = URI.open(item[:url])
   landmark.photo.attach(io: file, filename: "#{item[:name]}.png", content_type: 'image/png')

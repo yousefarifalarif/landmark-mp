@@ -10,7 +10,11 @@ class LandmarksController < ApplicationController
       @landmarks = Landmark.all
     end
     @markers = @landmarks.geocoded.map do |landmark|
-      { lat: landmark.latitude, lng: landmark.longitude }
+      {
+        lat: landmark.latitude,
+        lng: landmark.longitude,
+        map_popup: render_to_string(partial: "map_popup", locals: { landmark: landmark })
+      }
     end
   end
 
@@ -21,6 +25,7 @@ class LandmarksController < ApplicationController
   def create
     @landmark = Landmark.new(landmark_params)
     @landmark.user = current_user
+    @landmark.address = "#{@landmark.name}, #{@landmark.location}"
     if @landmark.save!
       redirect_to landmarks_path
     else
@@ -34,7 +39,7 @@ class LandmarksController < ApplicationController
 
   def show
     @booking = Booking.new
-    @markers = [{ lat: @landmark.latitude, lng: @landmark.longitude }]
+    @markers = [{ lat: @landmark.latitude, lng: @landmark.longitude, map_popup: render_to_string(partial: "map_popup", locals: { landmark: @landmark }) }]
   end
 
   def destroy

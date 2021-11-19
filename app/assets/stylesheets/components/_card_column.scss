@@ -6,14 +6,30 @@
 
 .card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 0;
 }
 
 .map-index {
-  min-width: 350px;
-  height: 600px;
+  min-width: 650px;
+  height: 100vh;
   margin-left: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   position: sticky;
-  top: 40px;
+  top: 72px;
+}
+
+#header {
+  margin: 0 0 0 50px;
+  padding: 0;
+
+  #title-index {
+  width: 100%;
+  padding: 0 0 30px 0;
+  }
+
+  .form-index {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  }
 }
